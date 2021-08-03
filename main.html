@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Simple weather service</title>
+ </head>
+ 
+ <style>
+  h1{
+  width: 100%;
+  top:0;
+  left:0;
+  text-align: center;
+  color: black;
+ 
+}
+
+ </style> 
+ <body>
+  <form>
+   <fieldset>
+     <header>  
+       <h1>Find geographic and weather information</h1>
+   
+  <header>
+
+   <laber for ="cityname">City name:</laber>
+   <input type="text" id="cityName" name= "cityName"/>
+   <laber for="countryname">Country name:</laber>
+   <input type="text" id="countryName" name="countryName"/>
+   <button id="button_weather">GET Weather</button>
+  
+        <ul>
+        <li><span >City name: </span> <span id ="name"></span></li>
+        <li><span >Country: </span> <span id ="country"></span></li>
+        <li><span>Time Zone: </span> <span id ="timezone"></span></li>
+         
+        <li><span>Longitude:</span><span id ="lon"> </span></li>
+        <li><span>Latitude:</span><span id ="lat"> </span></li>
+        <br>
+        <li><span>Main Weather: </span><span id ="mainweather"> </span></li>
+        <li><span>Weather description: </span><span id ="description"> </span></li>
+        <li><span>Wind Speed: </span><span id ="windspeed"> </span></li>
+        <li><span>Clouds:</span><span id ="clouds"> </span></li>
+        
+        <br>
+	      <li><span >Temperature: </span> <span id ="temp"></span></li>
+        <li><span >Temp_max: </span> <span id ="temp_max"></span></li>
+        <li><span >Temp_min: </span> <span id ="temp_min"></span></li>
+        
+        
+	      <li><span >Humidity: </span> <span id ="humidity"></span></li>
+        <li><span >Pressure: </span> <span id ="pressure"></span></li>
+        
+        <br><br>
+        <a href="photo.html" title="Photo weather"> Photo weather</a>
+        <br>
+        <a href="map.html" title="Map"> Map</a>
+         <br>
+        <a href="contact.html" title="Contact Me"> Contact us </a>
+	      </ul>
+      
+   </fieldset>
+  </form>
+  <form>
+   <fieldset>
+   <legdend>Download the result </legdend>
+   <p>   </p> 
+   <textarea id="text-val" rows="2"></textarea><br/>
+   <input type="button" id="dwn-button" value="Download"/>
+   </fieldset>
+  </form>
+  
+   </body>
+
+  <script src="./index.js"></script>
+
+</html>

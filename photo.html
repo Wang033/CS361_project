@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Picture weather</title>
+ </head>
+ 
+ <style>
+  h1{
+  width: 100%;
+  top:0;
+  left:0;
+  text-align: center;
+  color: black;
+ 
+}
+ 
+ </style>
+ 
+ <body>
+  <form>
+   <fieldset>
+     <header>  
+       <h1>Weather Graph</h1>
+   
+  <header>
+
+   <laber for ="cityname">City name:</laber>
+   <input type="text" id="cityName" name= "cityName"/>
+   <laber for="countryname">Country name:</laber>
+   <input type="text" id="countryName" name="countryName"/>
+   <button id="button_weather">GET Weather</button>
+  
+        <ul>
+        <li><span >City name: </span> <span id ="name"></span></li>
+        <li><span >Country: </span> <span id ="country"></span></li>
+
+        <br>
+        <li><span>Weather description: </span><span id ="description"> </span></li>
+        <br>
+        <li><span> </span><span id = "imageDiv"> </span> </li>
+        
+	</ul>
+      
+   </fieldset>
+
+     <div>
+  <ul>
+   <a href="contact.html" title="Contact Me"> Contact us </a>
+   <br>
+    <a href="main.html" title="Home pages"> Home pages/</a>
+  </ul>
+  </div>
+  
+   </body>
+  <script>
+  const picturePath = './picture/'; 
+  document.addEventListener('DOMContentLoaded', bindButtons);
+  function bindButtons(){
+          document.getElementById('button_weather').addEventListener('click', function(event){  
+          var apiKey = '6a9ecb926f692993ea793fa53ba6f81b';
+     
+          var req =new XMLHttpRequest(); 
+          var cityname= document.getElementById('cityName').value;
+          var countryname =document.getElementById('countryName').value;         
+          if(cityname && countryname) {
+
+          req.open("GET","http://api.openweathermap.org/data/2.5/weather?q="+cityname +","+countryname+"&appid="+apiKey, false);
+          
+          }
+          
+           req.send(null);
+           var response = JSON.parse(req.responseText);
+           document.getElementById("name").textContent = response.name;     
+           document.getElementById("description").textContent = response.weather[0].description; 
+           document.getElementById("country").textContent = response.sys.country;
+           const description = response.weather[0].description
+           event.preventDefault();
+
+       
+        if (description == "light rain" || description == "moderate rain") {
+        
+          var par = document.getElementById('imageDiv');
+          var img = document.createElement('img');
+          img.src = "./picture/rain.jpg";
+          par.appendChild(img);
+        }
+        else {
+           
+          var par = document.getElementById('imageDiv');
+          var img = document.createElement('img');
+          img.src = "./picture/sun.png";
+          par.appendChild(img);
+        }
+
+  });          
+}
+</script>
+</html>
