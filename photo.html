@@ -22,7 +22,7 @@
   <form>
    <fieldset>
      <header>  
-       <h1>Weather Graph</h1>
+       <h1>Weather Image</h1>
    
   <header>
 
@@ -41,8 +41,18 @@
         <br>
         <li><span> </span><span id = "imageDiv"> </span> </li>
         
+        
 	</ul>
       
+   </fieldset>
+   
+   <fieldset>
+   <laber for = "Call teammate's service:"> Call teammate's service: </laber>
+   <input type= "text" id ="imageName" name="imageName"/>
+   <button id="button_image">GET Image</button>
+   <br>
+   <li><span >Return result: </span> <span id ="return_image"></span></li>
+   <br>
    </fieldset>
 
      <div>
@@ -54,47 +64,5 @@
   </div>
   
    </body>
-  <script>
-  const picturePath = './picture/'; 
-  document.addEventListener('DOMContentLoaded', bindButtons);
-  function bindButtons(){
-          document.getElementById('button_weather').addEventListener('click', function(event){  
-          var apiKey = '6a9ecb926f692993ea793fa53ba6f81b';
-     
-          var req =new XMLHttpRequest(); 
-          var cityname= document.getElementById('cityName').value;
-          var countryname =document.getElementById('countryName').value;         
-          if(cityname && countryname) {
-
-          req.open("GET","http://api.openweathermap.org/data/2.5/weather?q="+cityname +","+countryname+"&appid="+apiKey, false);
-          
-          }
-          
-           req.send(null);
-           var response = JSON.parse(req.responseText);
-           document.getElementById("name").textContent = response.name;     
-           document.getElementById("description").textContent = response.weather[0].description; 
-           document.getElementById("country").textContent = response.sys.country;
-           const description = response.weather[0].description
-           event.preventDefault();
-
-       
-        if (description == "light rain" || description == "moderate rain") {
-        
-          var par = document.getElementById('imageDiv');
-          var img = document.createElement('img');
-          img.src = "./picture/rain.jpg";
-          par.appendChild(img);
-        }
-        else {
-           
-          var par = document.getElementById('imageDiv');
-          var img = document.createElement('img');
-          img.src = "./picture/sun.png";
-          par.appendChild(img);
-        }
-
-  });          
-}
-</script>
+  <script src="./photo.js"></script>
 </html>
